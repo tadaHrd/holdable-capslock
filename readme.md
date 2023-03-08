@@ -4,10 +4,9 @@
 
 ## Contents:
 
-### [Installation](#instalation)
-
 ### [Arguments](#arguments)
 
+### [Installation](#instalation)
 
 ## Arguments:
 
