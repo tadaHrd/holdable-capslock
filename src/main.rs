@@ -4,9 +4,10 @@ use std::time::{Instant, Duration};
 fn main() {
     let mut start_time = Instant::now();
     
-    let mut display_capslock_state = false;
+    let mut display_capslock_state = true;
+    let mut time = 300;
     
-    execute_arg_shit(std::env::args().collect::<Vec<String>>(), &mut display_capslock_state);
+    execute_arg_shit(std::env::args().collect::<Vec<String>>(), &mut display_capslock_state, &mut time);
     
     loop {
         let elapsed = start_time.elapsed();
@@ -15,7 +16,7 @@ fn main() {
         let is_toggled_on = (state as u16 & 0x0001 as u16) != 0;
         let is_on = (state as u16 & 0x8000 as u16) != 0;
         
-        if elapsed >= Duration::from_millis(300) {
+        if elapsed >= Duration::from_millis(time as u64) {
             if !is_on & is_toggled_on {
                 unsafe {
                     keybd_event(VK_CAPITAL as u8, 0x3a, KEYEVENTF_EXTENDEDKEY, 0);
@@ -39,15 +40,36 @@ fn main() {
     }
 }
 
-fn execute_arg_shit(args: Vec<String>, display_capslock_state: &mut bool) {
+fn execute_arg_shit(args: Vec<String>, display_capslock_state: &mut bool, time: &mut i32) {
+    let mut is_time_arg = false;
+    
     for arg in args {
+        if is_time_arg {
+            is_time_arg = false;
+            *time = arg.parse::<i32>().unwrap();
+        }
+        
+        if arg
+            .replace("-", "")
+            .replace("_", "")
+        == "time" ||
+        arg
+            .replace("-", "")
+            .replace("_", "")
+        == "t"{
+            is_time_arg = true;
+        }
+        
         match arg
             .replace("-", "")
             .replace("_", "")
             .as_str() {
-                "displaytoggle" => {
-                    *display_capslock_state = true;
+                "displayoff" | "nodisplay" => {
+                    *display_capslock_state = false;
                 },
+                "notoggle" | "onlyhold" => {
+                    *time = 0;
+                }
                 _ => ()
             }
     }
