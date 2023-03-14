@@ -1,5 +1,7 @@
 # Holdable Caps Lock
 
+## This is slow (It took 20% of my CPU) so do not use this if you care about performance
+
 ###### Sorry for stupid documentation because I suck at that
 
 ## Contents:
