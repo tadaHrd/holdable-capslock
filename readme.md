@@ -1,29 +1,29 @@
 # Holdable Caps Lock
 
-###### Sorry for stupid documentation because I suck at that
-
 ## Contents:
 
 ### [Arguments](#arguments)
 
-### [Installation](#instalation)
+### [Installation](#installation)
 
 ## Arguments:
 
 - '-' and '_' are ignored
 (`display-off` is the same as `displayoff`)
 - `displayoff` or `nodisplay`
-  - Doesn't display the `"toggled <caps lock state> and <caps lock key held or released>"` message
+  - Doesn't display the `"toggled <caps lock state> and <caps lock key hold state>"` message
 - `t` or `time`
   - Next argument is the time that it will take to turn off Caps Lock in milliseconds (default is 300 ms)
 - `notoggle` or `onlyhold`
   - Makes Caps Lock only holdable (not toggleable)
+- `waittime` or `wait`
+  - Makes it wait after each iteration (runs faster but less accurate)
 
-## Instalation
+## Installation
 
-### Windows
+### Windows and Linux (x64)
 
-1. Go to [this](https://github.com/tadaHrd/holdable-capslock/releases/tag/1.0) page and download the executable
+1. Go to [this](https://github.com/tadaHrd/holdable-capslock/releases/tag/2.0) page and download the executable
 2. Click on it and it will open a terminal window which **You can't close!**
 
 ### Other systems
