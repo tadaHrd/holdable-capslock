@@ -21,7 +21,7 @@
 
 ## Installation
 
-### Windows and Linux (x64)
+### Windows
 
 1. Go to [this](https://github.com/tadaHrd/holdable-capslock/releases/tag/2.0) page and download the executable
 2. Click on it and it will open a terminal window which **You can't close!**
